@@ -35,10 +35,6 @@ jobs:
         run: |
           wget http://gosspublic.alicdn.com/ossutil/1.6.19/ossutil64
           chmod 755 ossutil64
-<<<<<<< HEAD
-=======
-          # mv ossutil64 /usr/local/bin/
->>>>>>> 319061321b984548f239e55ad7288a5298806c96
           ./ossutil64 config -e $ALI_OSS_ENDPOINT -i $ALI_OSS_ACCESS_KEY_ID -k $ALI_OSS_ACCESS_KEY_SECRET
           ./ossutil64 cp ./dop oss://medit-private/Utils/
 
