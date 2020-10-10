@@ -28,12 +28,15 @@ jobs:
               dep ensure
           fi
       - name: Install ossutil
+        env:
+          ALI_OSS_ENDPOINT: ${{ secrets.ALI_OSS_ENDPOINT }}
+          ALI_OSS_ACCESS_KEY_ID: ${{ secrets.ALI_OSS_ACCESS_KEY_ID }}
+          ALI_OSS_ACCESS_KEY_SECRET: ${{ secrets.ALI_OSS_ACCESS_KEY_SECRET }}
         run: |
           wget http://gosspublic.alicdn.com/ossutil/1.6.19/ossutil64
           chmod 755 ossutil64
-          mv ossutil64 /usr/local/bin/
-          ossutil64 config -e $ALI_OSS_ENDPOINT -i $ALI_OSS_ACCESS_KEY_ID -k $ALI_OSS_ACCESS_KEY_SECRET
-          ossutil cp ./dop oss://medit-private/Utils/
+          ./ossutil64 config -e $ALI_OSS_ENDPOINT -i $ALI_OSS_ACCESS_KEY_ID -k $ALI_OSS_ACCESS_KEY_SECRET
+          ./ossutil64 cp ./dop oss://medit-private/Utils/
 
       - name: Build
         run: go build -o dop main.go
