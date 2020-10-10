@@ -31,7 +31,7 @@ jobs:
         fi
 
     - name: Build
-      run: go build -o dop main.go .
+      run: go build -o dop main.go
 
     - name: Test
       run: go test -v .
